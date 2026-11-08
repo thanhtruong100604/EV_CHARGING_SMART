@@ -1,5 +1,6 @@
 // Toàn bộ cấu hình đọc từ file .env (biến phải bắt đầu bằng VITE_)
-const DEFAULT_API = "https://carparkingsmart.onrender.com/api";
+//const DEFAULT_API = "https://carparkingsmart.onrender.com/api";
+const DEFAULT_API = "http://127.0.0.1:8000/api";
 export const API_URL = (import.meta.env.VITE_API_URL || DEFAULT_API).replace(/\/$/, "");
 export const SERVER_ORIGIN = API_URL.replace(/\/api$/, "");
 export const REFRESH_SECONDS = Number(import.meta.env.VITE_REFRESH_SECONDS || 30);
