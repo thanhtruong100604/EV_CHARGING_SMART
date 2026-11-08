@@ -1,0 +1,14 @@
+# Đặt file này ở GỐC repo. Mỗi lần push lên nhánh mặc định, GitLab tự build web và đưa lên GitLab Pages (miễn phí).
+pages:
+  image: node:20
+  stage: deploy
+  script:
+    - cd ev-charging-web
+    - npm ci
+    - npm run build
+    - mv dist ../public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

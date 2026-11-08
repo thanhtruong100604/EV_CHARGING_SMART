@@ -1,0 +1,19 @@
+# Python / Django
+.venv/
+venv/
+__pycache__/
+*.pyc
+db.sqlite3
+staticfiles/
+.env
+# Web
+node_modules/
+dist/
+# Android
+.gradle/
+build/
+local.properties
+*.apk
+# IDE
+.idea/
+.vscode/

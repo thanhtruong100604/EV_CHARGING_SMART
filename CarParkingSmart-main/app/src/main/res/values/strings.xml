@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Trạm Sạc Thông Minh</string>
+    
+    <!-- Search -->
+    <string name="search_hint">Tìm trạm sạc gần bạn...</string>
+    <string name="voice_search">Tìm kiếm bằng giọng nói</string>
+    
+    <!-- Categories -->
+    <string name="category_fast_charging">⚡ Sạc Nhanh</string>
+    <string name="category_normal_charging">🔋 Sạc Thường</string>
+    <string name="category_ev_parking">🚗 Bãi Đỗ EV</string>
+    <string name="category_eco_station">🌿 Eco Station</string>
+    
+    <!-- Buttons -->
+    <string name="btn_book_charging">⚡ ĐẶT CHỖ SẠC NGAY</string>
+    <string name="btn_directions">🚗 Chỉ đường đến trạm sạc</string>
+    <string name="btn_save">Lưu</string>
+    <string name="btn_share">Chia sẻ</string>
+    <string name="btn_nearby">Gần đây</string>
+    <string name="btn_my_location">Vị trí của tôi</string>
+    <string name="btn_layers">Lớp bản đồ</string>
+    <string name="btn_save_spot">💾 Lưu xe</string>
+    <string name="btn_find_spot">🔍 Tìm xe</string>
+    
+    <!-- Bottom Sheet -->
+    <string name="sheet_title">⚡ Thông tin trạm sạc</string>
+    <string name="charging_available">⚡ Còn %1$d cổng sạc</string>
+    <string name="charging_station">⚡ Trạm sạc xe điện</string>
+    <string name="parking_lot">🅿️ Bãi đỗ xe</string>
+    <string name="total_spots">%1$d chỗ tổng</string>
+    <string name="charging_ports">%1$d cổng sạc</string>
+    
+    <!-- Notifications -->
+    <string name="nearest_station">⚡ TRẠM SẠC GẦN NHẤT</string>
+    <string name="book_now">Đặt trước ngay để sạc xe điện của bạn!</string>
+    <string name="searching_fast_charging">Đang tìm trạm sạc nhanh gần bạn...</string>
+    <string name="show_all_stations">Hiển thị tất cả trạm sạc thường...</string>
+    <string name="ev_parking_found">Tìm thấy %1$d bãi đỗ xe điện</string>
+    <string name="eco_friendly_search">🌿 Tìm kiếm trạm sạc thân thiện môi trường</string>
+    
+    <!-- Status -->
+    <string name="available">Còn chỗ</string>
+    <string name="low_availability">Sắp đầy</string>
+    <string name="full">Hết chỗ</string>
+    <string name="charging_full">Hết chỗ sạc</string>
+    
+    <!-- Messages -->
+    <string name="enable_gps">Bật GPS để tìm trạm sạc</string>
+    <string name="calculating_route">Đang tính toán đường đi...</string>
+    <string name="no_charging_available">Không có trạm sạc nào còn chỗ trống</string>
+    <string name="booking_success">✅ ĐẶT CHỖ SẠC THÀNH CÔNG!</string>
+    
+    <!-- Distance -->
+    <string name="distance_from_you">%1$s từ vị trí của bạn</string>
+    <string name="meters">%1$d m</string>
+    <string name="kilometers">%.1f km</string>
+</resources>

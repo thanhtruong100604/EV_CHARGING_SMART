@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:elevation="8dp">
+
+    <!-- Thanh thông tin chính -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#4CAF50">
+
+        <TextView
+            android:id="@+id/tv_navigation_instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đang chuẩn bị..."
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:id="@+id/tv_distance_remaining"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Còn: -- km"
+                android:textSize="14sp"
+                android:textColor="#E0F2F1"/>
+
+            <TextView
+                android:id="@+id/tv_time_remaining"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Thời gian: -- phút"
+                android:textSize="14sp"
+                android:textColor="#E0F2F1"/>
+
+            <TextView
+                android:id="@+id/tv_step_count"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Bước 1/10"
+                android:textSize="14sp"
+                android:textColor="#E0F2F1"
+                android:gravity="end"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Danh sách các bước còn lại -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_remaining_steps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="200dp"
+        android:padding="8dp"/>
+
+    <!-- Nút điều khiển -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="12dp"
+        android:background="#F5F5F5">
+
+        <Button
+            android:id="@+id/btn_stop_navigation"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Kết thúc"
+            android:backgroundTint="#F44336"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btn_mute_voice"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="🔊 Tắt tiếng"
+            android:backgroundTint="#757575"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+
+</LinearLayout>

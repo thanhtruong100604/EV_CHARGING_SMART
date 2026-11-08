@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Mặt trăng -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M12,3a9,9 0,0 0,0 18,9 9,0 0,0 9,-9A9 9,0 0,0 12,3zM12,19a7,7 0,0 1,0 -14,7.1 7.1,0 0,1 1,0.07,5 5,0 0,0 0,13.86A7 7,0 0,1 12,19z"/>
+</vector>

@@ -1,0 +1,30 @@
+# (Tuỳ chọn) Blueprint cho Render. Bạn có thể bỏ qua file này và cấu hình thẳng trên Dashboard
+# theo hướng dẫn trong Backend_BaiSacXe/README_BACKEND.md — hai cách cho kết quả giống nhau.
+# KHÔNG ghi mật khẩu vào file này: các biến "sync: false" sẽ được hỏi khi tạo Blueprint.
+services:
+  - type: web
+    name: carparkingsmart
+    runtime: python
+    region: singapore
+    plan: free
+    rootDir: Backend_BaiSacXe
+    buildCommand: bash build.sh
+    startCommand: gunicorn server_parking.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    healthCheckPath: /health/
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.5
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
+      - key: PAYMENT_ACCOUNT_NO
+        sync: false
+      - key: PAYMENT_BANK_BIN
+        value: "970415"
+      - key: PAYMENT_ACCOUNT_NAME
+        sync: false
+      - key: BOOKING_AMOUNT
+        value: "100000"
+      - key: REQUIRE_AUTH
+        value: "False"

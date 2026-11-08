@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⏰ Chọn khung giờ sạc"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:textColor="#1B5E20"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tv_selected_slot_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="13sp"
+        android:textColor="#4CAF50"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Lưới các khung giờ -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_time_slots"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_confirm_time"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="XÁC NHẬN ĐẶT CHỖ ▶"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:background="@drawable/gradient_green_bg"
+        android:layout_marginTop="16dp"
+        android:visibility="gone" />
+
+</LinearLayout>

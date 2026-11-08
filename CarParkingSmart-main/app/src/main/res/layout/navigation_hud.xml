@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- navigation_hud.xml
+     Đặt file này vào: res/layout/navigation_hud.xml
+     Đây là thanh chỉ đường nổi lên trên bản đồ giống Google Maps.
+     Được include vào activity_main.xml bên dưới MapView.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_hud"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone"
+    android:elevation="12dp">
+
+    <!-- ── CARD HƯỚNG DẪN BƯỚC HIỆN TẠI ── -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#1565C0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <!-- Icon mũi tên maneuver -->
+            <TextView
+                android:id="@+id/tv_nav_maneuver_icon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:gravity="center"
+                android:text="⬆️"
+                android:textSize="36sp"
+                android:background="@drawable/circle_nav_icon"
+                android:layout_marginEnd="16dp" />
+
+            <!-- Nội dung hướng dẫn -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_nav_instruction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Đi thẳng"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:maxLines="2"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/tv_nav_road_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Đường Láng"
+                    android:textColor="#B3E5FC"
+                    android:textSize="14sp"
+                    android:layout_marginTop="2dp" />
+
+            </LinearLayout>
+
+            <!-- Khoảng cách đến điểm rẽ -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginStart="12dp">
+
+                <TextView
+                    android:id="@+id/tv_nav_distance_to_turn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="250"
+                    android:textColor="#FFFFFF"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/tv_nav_distance_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="mét"
+                    android:textColor="#B3E5FC"
+                    android:textSize="13sp"
+                    android:gravity="center" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ── THANH THÔNG TIN TỔ TỔNG: Thời gian + Tổng km + Nút tắt ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#37474F"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp">
+
+        <!-- Thời gian còn lại -->
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@android:drawable/ic_lock_idle_alarm"
+            app:tint="#80CBC4" />
+
+        <TextView
+            android:id="@+id/tv_nav_time_remaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5 phút"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginStart="6dp" />
+
+        <!-- Tổng quãng đường còn lại -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  •  "
+            android:textColor="#80CBC4"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_nav_total_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.2 km"
+            android:textColor="#80CBC4"
+            android:textSize="14sp" />
+
+        <!-- Số bước / tổng bước -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tv_nav_step_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bước 1/5"
+            android:textColor="#80CBC4"
+            android:textSize="12sp"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Nút tắt tiếng -->
+        <ImageButton
+            android:id="@+id/btn_nav_mute"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_lock_silent_mode_off"
+            android:contentDescription="Tắt tiếng"
+            app:tint="#80CBC4" />
+
+        <!-- Nút dừng điều hướng -->
+        <Button
+            android:id="@+id/btn_nav_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Dừng"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:background="@drawable/btn_red_rounded"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_marginStart="4dp" />
+
+    </LinearLayout>
+
+    <!-- ── BANNER "ĐÃ ĐẾN NƠI" (ẩn mặc định, hiện khi arrive) ── -->
+    <LinearLayout
+        android:id="@+id/nav_arrival_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2E7D32"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="12dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎉 Bạn đã đến nơi!"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>

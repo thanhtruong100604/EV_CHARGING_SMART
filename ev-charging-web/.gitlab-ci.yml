@@ -1,0 +1,14 @@
+# Tự build và đưa web lên GitLab Pages mỗi lần push nhánh main
+image: node:20
+
+pages:
+  stage: deploy
+  script:
+    - npm ci
+    - npm run build
+    - mv dist public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
