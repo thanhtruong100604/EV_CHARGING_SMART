@@ -36,7 +36,6 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".onrender.com"] + env_list("ALLOWED_
 CSRF_TRUSTED_ORIGINS = ["https://*.onrender.com"] + env_list("CSRF_TRUSTED_ORIGINS")
 
 # Web được phép gọi API. Để trống = cho tất cả (app Android không bị ảnh hưởng bởi CORS).
-# Khi web đã lên GitLab Pages, có thể siết lại: CORS_ALLOWED_ORIGINS=https://<tên>.gitlab.io
 CORS_ALLOWED_ORIGINS = env_list("CORS_ALLOWED_ORIGINS")
 CORS_ALLOW_ALL_ORIGINS = not CORS_ALLOWED_ORIGINS
 
@@ -102,17 +101,13 @@ TEMPLATES = [
 ]
 
 # ---- Database --------------------------------------------------------------
-# Render: đặt biến DATABASE_URL (dán Internal hoặc External Database URL của Postgres).
-# Máy local: không đặt → tự dùng SQLite (db.sqlite3).
-DATABASE_URL = os.environ.get("DATABASE_URL", "")
-if not DATABASE_URL and ON_RENDER:
-    raise ImproperlyConfigured(
-        "Chưa đặt DATABASE_URL trên Render. Nếu bỏ qua, server sẽ chạy trên SQLite tạm "
-        "và MẤT dữ liệu mỗi lần deploy. Vào Environment → Add → DATABASE_URL."
-    )
+# Ưu tiên lấy từ biến môi trường DATABASE_URL trên Render, nếu chạy local hoặc chưa đặt sẽ dùng dự phòng Database mới
+DEFAULT_NEW_DB = "postgresql://parking_db_lhds_user:hQHFEIZrvbqPdGIgQMSCN3HrRzgjKlmv@dpg-dbjvoglg1s2s738su2ag-a.singapore-postgres.render.com/parking_db_lhds?sslmode=require"
+DATABASE_URL = os.environ.get("DATABASE_URL", DEFAULT_NEW_DB)
+
 DATABASES = {
     "default": dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        default=DATABASE_URL,
         conn_max_age=600,
         conn_health_checks=True,
     )
@@ -133,7 +128,6 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
-    # Không dùng bản "Manifest" để quên chạy collectstatic cũng không làm trang admin lỗi 500
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedStaticFilesStorage"},
 }
 
@@ -145,7 +139,7 @@ LOGGING = {
     "handlers": {"console": {"class": "logging.StreamHandler", "formatter": "simple"}},
     "loggers": {
         "django.request": {"handlers": ["console"], "level": "WARNING", "propagate": False},
-        "charging_api": {"handlers": ["console"], "level": "INFO", "propagate": False},
+        "charging_api": {"handlers": {"console": {"class": "logging.StreamHandler", "formatter": "simple"}}, "level": "INFO", "propagate": False},
     },
 }
 
@@ -155,11 +149,10 @@ BOOKING_AMOUNT = int(os.environ.get("BOOKING_AMOUNT", 100000))  # VNĐ / lượt
 MAX_PENDING_HOLDS = int(os.environ.get("MAX_PENDING_HOLDS", 2))  # tối đa số đơn chưa thanh toán / người
 QUICK_CONFIRMED_MAX_HOURS = int(os.environ.get("QUICK_CONFIRMED_MAX_HOURS", 3))
 
-# Bật True khi CẢ app và web đã gửi token → chặn người lạ đọc/hủy đơn của người khác
 REQUIRE_AUTH = env_bool("REQUIRE_AUTH", False)
 
 # ---- Thanh toán chuyển khoản (VietQR) --------------------------------------
 PAYMENT_BANK_BIN = os.environ.get("PAYMENT_BANK_BIN", "970415")  # 970415 = VietinBank
 PAYMENT_ACCOUNT_NO = os.environ.get("PAYMENT_ACCOUNT_NO", "108876696755")
 PAYMENT_ACCOUNT_NAME = os.environ.get("PAYMENT_ACCOUNT_NAME", "EV CHARGING SMART")
-PAYMENT_WEBHOOK_SECRET = os.environ.get("PAYMENT_WEBHOOK_SECRET", "")  # để trống = tắt webhook
+PAYMENT_WEBHOOK_SECRET = os.environ.get("PAYMENT_WEBHOOK_SECRET", "")
