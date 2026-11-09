@@ -8,7 +8,7 @@ import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
-    private const val BASE_URL = "https://carparkingsmart.onrender.com/"
+    private const val BASE_URL = "https://ev-charging-smart.onrender.com"
 
     /** Trả về token đăng nhập hiện tại (MainActivity gán). Null = chưa đăng nhập. */
     @Volatile
