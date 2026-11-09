@@ -102,7 +102,7 @@ TEMPLATES = [
 
 # ---- Database --------------------------------------------------------------
 # Ưu tiên lấy từ biến môi trường DATABASE_URL trên Render, nếu chạy local hoặc chưa đặt sẽ dùng dự phòng Database mới
-DEFAULT_NEW_DB = "postgresql://parking_db_lhds_user:hQHFEIZrvbqPdGIgQMSCN3HrRzgjKlmv@dpg-dbjvoglg1s2s738su2ag-a.singapore-postgres.render.com/parking_db_lhds?sslmode=require"
+DEFAULT_NEW_DB = "postgresql://postgres.tgvmjzxajtbihwddsmgi:thanhtruong12345679@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres"
 DATABASE_URL = os.environ.get("DATABASE_URL", DEFAULT_NEW_DB)
 
 DATABASES = {
